@@ -59,7 +59,7 @@ unary_expression
 	;
 
 unary_operator
-	: '&'
+	: '&'//	{$$ = $1 + $2}
 	| '*'
 	| '+'
 	| '-'
@@ -275,12 +275,12 @@ declarator
 	;
 
 direct_declarator
-	: IDENTIFIER
-	| '(' declarator ')'
-	| direct_declarator '[' constant_expression ']'
+	: IDENTIFIER	{printf("soy un identificador! \n"); }   //hay que escribir cosas en algo para saber que es lo que esta pasando en cada uno
+	| '(' declarator ')' {printf(" id declaracion \n"); }
+	| direct_declarator '[' constant_expression ']'    {printf(" id constante \n"); }
 	| direct_declarator '[' ']'
-	| direct_declarator '(' parameter_type_list ')'
-	| direct_declarator '(' identifier_list ')'
+	| direct_declarator '(' parameter_type_list ')'    {printf(" id tipo parametro \n"); }
+	| direct_declarator '(' identifier_list ')' {printf(" id tipo lista \n"); }
 	| direct_declarator '(' ')'
 	;
 
